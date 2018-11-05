@@ -1,14 +1,15 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
-const Menu = () => (
+const Menu = () => <nav>
     <div>
         <ul>
-            <li><Link exact to="/">Home</Link></li>
-            <li><Link to="/single">Single</Link></li>
-            <li><Link to="/photogrid">PhotoGrid</Link></li>
+            <li><NavLink exact to="/">Home</NavLink></li>
+            <li><NavLink to="/single">Single</NavLink></li>
+            <li><NavLink to="/photogrid">PhotoGrid</NavLink></li>
         </ul>
     </div>
-)
+</nav>
+
 
 export default Menu;

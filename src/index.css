@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    width: 100%;
+    background-color:lightblue;
+
+}
+
+.product-listing {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.product-listing .product-list-item{
+    padding: 10px 30px;
+    width: 200px;
+}
+
+.page-container {
+    width: 800px;
+    margin: 10px auto;
+    background-color: white;
+}

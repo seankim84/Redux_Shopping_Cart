@@ -6,11 +6,12 @@ import App from '../App';
 import Store from '../config/store';
 
 const Root = () => (
-    <Provider store={Store}>
         <BrowserRouter>
+        <Provider store={Store}>
             <App />
+            </Provider>
         </BrowserRouter>
-    </Provider>
+    
 );
 
 export default Root;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { Main, Single, PhotoGrid } from './components/pages';
+import { Main, Single, CartPage } from './components/pages';
 import Menu from './components/Menu';
 
 class App extends Component {
@@ -10,7 +10,7 @@ class App extends Component {
                 <Menu />
                 <Route exact path="/" component={Main} />
                 <Route path="/single" component={Single} />
-                <Route path="/photogrid" component={PhotoGrid}/>
+                <Route path="/cart" component={CartPage}/>
             </div>
         )
     }

@@ -9,6 +9,7 @@ function ProductListing(props) {
             <ProductListItem 
                 product={product}
                 addToCart={props.addToCart}
+                cart={props.cart}
                 /> )
         }
     </div>

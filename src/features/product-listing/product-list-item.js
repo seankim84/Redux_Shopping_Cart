@@ -14,7 +14,9 @@ export default function ProductListItem(props){
         <div>
             <button
                 onClick={() => props.addToCart(props.product)}
-            >Add to Cart</button>
+            >Add to Cart({
+                props.cart.id
+            })</button>
         </div>
     </div>
 }

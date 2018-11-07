@@ -1,26 +1,45 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect } from  'react-redux'
 
-export const cartItemsWithQuantities = (cartItems) => {
-  return cartItems.reduce((acc, item) => {
-    const filteredItem = acc.filter(i2 => i2.id === item.id)[0]
-    filteredItem !== undefined
-      ? filteredItem.quantity ++
-      : acc.push({ ...item, quantity: 1 })
-    return acc
-  }, [])
+const sort = (items) => {
+  return items.sort((a, b) => a.id < b.id)
 }
 
 function Cart(props) {
-  return <div className='cart'>
-    { cartItemsWithQuantities(props.cart).map(item =>
-      <div>
-        { item.name } - { item.price } - { item.quantity }
-      </div>)}
-  </div>
+  return <table>
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>Quantity</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        sort(props.cart).map(item => <tr>
+          <td>{ item.name }</td>
+          <td>{ item.quantity }</td>
+          <td>
+            <button
+              onClick={() => props.addToCart(item)}
+            >+</button>
+            <button
+              onClick={() => props.removeFromCart(item)}
+            >-</button>
+          </td>
+          <td>
+            <button
+              onClick={() => props.removeAllFromCart(item)}
+            >Remove from cart</button>
+          </td>
+        </tr>)
+      }
+    </tbody>
+  </table>
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   return {
     cart: state.cart,
   }
@@ -28,11 +47,14 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    add: (value) => {
-      dispatch({ type: 'ADD', payload: value })
+    addToCart: (item) => {
+      dispatch({ type: 'ADD', payload: item })
     },
-    remove: (index) => {
-      dispatch({ type: 'REMOVE', payload: index }) 
+    removeFromCart: (item) => {
+      dispatch({ type: 'REMOVE', payload: item })
+    },
+    removeAllFromCart: (item) => {
+      dispatch({ type: 'REMOVE_ALL', payload: item })
     }
   }
 }

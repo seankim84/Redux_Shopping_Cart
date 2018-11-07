@@ -2,18 +2,17 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import ProductListItem from './product-list-item'
-import { cartItemsWithQuantities } from '../cart'
 
 
-function ProductList(props) {
-  return <div className="product-listing">
+function ProductListing(props) {
+  return <div>
     {
       props.products.map( product =>
         <ProductListItem
           product={product}
           addToCart={props.addToCart}
           removeFromCart={props.removeFromCart}
-          cart={cartItemsWithQuantities(props.cart)}
+          cartItem={props.cart.filter(cartItem => cartItem.id === product.id)[0]}
         />)
     }
   </div>
@@ -36,5 +35,5 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProductList)
+export default connect(mapStateToProps, mapDispatchToProps)(ProductListing)
 

@@ -6,7 +6,7 @@ import Menu from './components/Menu';
 class App extends Component {
     render(){
         return(
-            <div className='page-container'>
+            <div>
                 <Menu />
                 <Route exact path="/" component={Main} />
                 <Route path="/single" component={Single} />
